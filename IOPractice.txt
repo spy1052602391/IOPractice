@@ -1,0 +1,27 @@
+package 文件IO练习;
+
+import java.io.File;
+
+public class Test {
+    public static void main(String[] args) {
+        //取得File对象
+        File file = new File("C:");
+        long start = System.currentTimeMillis();
+        listAllFiles(file);
+        long end = System.currentTimeMillis();
+        System.out.println("遍历结束:"+(end-start));
+    }
+
+    public static void listAllFiles(File file){
+        if(file.exists() && file.isFile()){
+            System.out.println(file);
+        }else{
+            File[] files = file.listFiles();
+            if(files != null){
+                for(File file1 : files){
+                    listAllFiles(file1);
+                }
+            }
+        }
+    }
+}
